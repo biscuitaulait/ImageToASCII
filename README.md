@@ -2,7 +2,7 @@
 
 ## How to use?
 
-For great work with image you can change WIDTH_OFFSET and MAX_WIDTH const
+For great work with image you can change `WIDTH_OFFSET` and `MAX_WIDTH` const
 
 ## Input image
 ![Input image](/images/in1.jpg)
