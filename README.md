@@ -9,9 +9,3 @@ For great work with image you can change WIDTH_OFFSET and MAX_WIDTH const
 
 ## Out image
 ![Output image](/images/out1.jpg)
-
-## Input image
-![Input image](/images/in2.jpg)
-
-## Out image
-![Input image](/images/out2.jpg)
