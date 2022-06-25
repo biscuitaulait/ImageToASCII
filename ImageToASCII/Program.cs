@@ -20,10 +20,11 @@ namespace ImageToASCII
             ImageToASCIIConverter converter = new ImageToASCIIConverter(bitmap);
             char[][] rows = converter.Convert();
 
-            foreach (var row in rows)
-            {
-                Console.WriteLine(row);
-            }
+            foreach (var row in rows) Console.WriteLine(row);
+
+            // Program save ASCII image in negative because classic windows notepad have white background and black font, but cmd have black background and white font.
+            char[][] rowsNegative = converter.ConvertAsNegative();
+            File.WriteAllLines("out.txt", rowsNegative.Select(r => new string(r)));
 
             Console.SetCursorPosition(0, 0);
             Console.ReadLine();

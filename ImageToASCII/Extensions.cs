@@ -6,16 +6,13 @@ namespace ImageToASCII
     {
         public static void ToGrayscale(this Bitmap bitmap)
         {
-            if (OperatingSystem.IsWindows())
+            for (int y = 0; y < bitmap.Height; y++)
             {
-                for (int y = 0; y < bitmap.Height; y++)
+                for (int x = 0; x < bitmap.Width; x++)
                 {
-                    for (int x = 0; x < bitmap.Width; x++)
-                    {
-                        var pixel = bitmap.GetPixel(x, y);
-                        int avg = (pixel.R + pixel.G + pixel.B) / 3;
-                        bitmap.SetPixel(x, y, Color.FromArgb(pixel.A, avg, avg, avg));
-                    }
+                    var pixel = bitmap.GetPixel(x, y);
+                    int avg = (pixel.R + pixel.G + pixel.B) / 3;
+                    bitmap.SetPixel(x, y, Color.FromArgb(pixel.A, avg, avg, avg));
                 }
             }
         }

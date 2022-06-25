@@ -4,15 +4,16 @@ namespace ImageToASCII
 {
     public class ImageToASCIIConverter
     {
+        private readonly char[] negativeTable = new char[] { '@', '#', 'S', '%', '?', '*', '+', ':', ',', '.' };
         private readonly char[] table = new char[] {'.', ',', ':', '+', '*', '?', '%', 'S', '#', '@'};
         private Bitmap bitmap;
 
-        public ImageToASCIIConverter(Bitmap bitmap)
-        {
-            this.bitmap = bitmap;
-        }
+        public ImageToASCIIConverter(Bitmap bitmap) => this.bitmap = bitmap;
 
-        public char[][] Convert()
+        public char[][] ConvertAsNegative() => Convert(negativeTable);
+        public char[][] Convert() => Convert(table);
+
+        private char[][] Convert(char[] table)
         {
             char[][] result = new char[bitmap.Height][];
 
@@ -20,9 +21,7 @@ namespace ImageToASCII
             {
                 result[y] = new char[bitmap.Width];
                 for (int x = 0; x < bitmap.Width; x++)
-                {
                     result[y][x] = table[(int)Map(bitmap.GetPixel(x, y).R, 0, 255, 0, table.Length - 1)];
-                }
             }
 
             return result;
