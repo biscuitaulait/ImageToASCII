@@ -6,10 +6,20 @@ namespace ImageToASCII
     {
         private const double WIDTH_OFFSET = 3;
         private const int MAX_WIDTH = 500;
-        private static void Main()
+        private static void Main(string[] args)
         {
-            Console.Write("Enter image path: ");
-            string path = Console.ReadLine();
+            if (args.Length == 0)
+            {
+                Console.WriteLine("Open any image by this program.");
+                Environment.Exit(0);
+            }
+
+            string path = args[0];
+            if (File.Exists(path) != true)
+            {
+                Console.WriteLine("File does't exist.");
+                Environment.Exit(0);
+            }
 
             Bitmap bitmap = new Bitmap(path);
 
